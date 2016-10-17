@@ -1,3 +1,6 @@
+#!/usr/bin/make -f
+# Makefile for mkversion program.
+
 TARGET = mkversion
 OBJECTS = mkversion.o
 
