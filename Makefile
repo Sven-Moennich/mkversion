@@ -7,17 +7,20 @@ OBJECTS = mkversion.o
 CC = gcc
 CFLAGS = -std=c99 -g -Wall
 
-default: $(TARGET)
+all:
+	@echo "run make build"
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(TARGET): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $@
+build:
+	gcc mkversion.c -o mkversion
 
 clean:
-	-rm -f $(OBJECTS)
-	-rm -f $(TARGET)
+	rm -f mkversion
 
 install: 
-	cp $(TARGET) /usr/bin/$(TARGET)
+	cp -f mkversion /usr/bin/mkversion
+
+build-rpi:
+	/opt/cross-pi-gcc/bin/arm-linux-gnueabihf-gcc mkversion.c -o mkversion
+
+install-rpi:
+	@echo "Nix zu tun"
